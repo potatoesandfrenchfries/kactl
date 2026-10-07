@@ -99,3 +99,28 @@
 			\item ways a convex polygon with $n+2$ sides can be cut into triangles by connecting vertices with straight lines.
 			\item permutations of $[n]$ with no 3-term increasing subseq.
 		\end{itemize}
+
+\section{Game theory}
+	Two players alternate moves in a finite game without cycles; the player who cannot move loses.
+
+	\subsection{Nim and Sprague-Grundy}
+		Nim with piles $a_i$: the player to move loses iff $a_1 \oplus \dots \oplus a_n = 0$.
+		In misère Nim (taking the last stone loses) this holds unless all piles are $\le 1$, where
+		the player to move loses iff the number of 1-piles is odd.
+
+		Grundy value $g(v) = \operatorname{mex}\{g(u) : v \to u\}$, where mex is the smallest non-negative
+		integer not in the set. A position loses iff $g=0$, and a sum of independent games
+		has $g = \bigoplus g_i$.
+
+		Subtraction game with set $S$: $g(n) = \operatorname{mex}\{g(n-s) : s \in S, s \le n\}$.
+		Staircase Nim (move any number of coins down one step) is Nim on the odd steps.
+		Moore's Nim$_k$ (take from up to $k$ piles): loses iff every bit position has a number of
+		1s divisible by $k+1$. Wythoff's game (two piles, take from one or equally from both) has
+		losing positions $(\lfloor k\varphi \rfloor, \lfloor k\varphi \rfloor + k)$, $\varphi = \frac{1+\sqrt 5}{2}$.
+
+		Games with cycles: positions without moves lose. Mark predecessors of losing positions as
+		winning, and a position all of whose successors are winning as losing (BFS backwards,
+		counting unresolved successors). The positions never marked are draws.
+
+	\subsection{Game trees}
+		\kactlimport{AlphaBeta.h}

@@ -8,6 +8,7 @@
 	\kactlimport{ModSum.h}
 	\kactlimport{ModMulLL.h}
 	\kactlimport{ModSqrt.h}
+	\kactlimport{Jacobi.h}
 
 \section{Primality}
 	\kactlimport{FastEratosthenes.h}
@@ -18,6 +19,7 @@
 	\kactlimport{euclid.h}
 	% \kactlimport{Euclid.java}
 	\kactlimport{CRT.h}
+	\kactlimport{Frobenius.h}
 
 	\subsection{Bézout's identity}
 	For $a \neq $, $b \neq 0$, then $d=gcd(a,b)$ is the smallest positive integer for which there are integer solutions to
@@ -26,6 +28,21 @@
 	$$\left(x+\frac{kb}{\gcd(a,b)}, y-\frac{ka}{\gcd(a,b)}\right), \quad k\in\mathbb{Z}$$
 
 	\kactlimport{phiFunction.h}
+
+\section{Hensel lifting}
+	Let $f \in \mathbb Z[x]$, $p$ prime, $k \ge 1$ and $f(r) \equiv 0 \pmod{p^k}$.
+	If $f'(r) \not\equiv 0 \pmod p$, then $r' = r - f(r)u$ with $u \equiv f'(r)^{-1} \pmod{p^k}$
+	is the unique root mod $p^{2k}$ with $r' \equiv r \pmod{p^k}$. Start from the roots
+	mod $p$ and double $k$ each step. If $f'(r) \equiv 0 \pmod p$, then either all of
+	$r + tp^k$, $0 \le t < p$, are roots mod $p^{k+1}$ (if $f(r) \equiv 0 \pmod{p^{k+1}}$), or none is.
+
+\section{Vieta jumping}
+	For an equation symmetric in $a,b$ and quadratic in each, e.g.\ $a^2+b^2 = k(ab+1)$,
+	take a solution with $a \ge b \ge 0$. As a quadratic in $a$ the roots sum to $kb$ and
+	multiply to $b^2-k$, so $(a', b)$ with $a' = kb-a = (b^2-k)/a$ is also a solution.
+	Keep replacing the larger variable by this value while it stays positive and smaller;
+	the descent ends at a minimal solution that must be a base case (here $b=0$, so $k=a^2$).
+	Hence $k$ is a perfect square whenever $(a^2+b^2)/(ab+1) = k \in \mathbb N$.
 
 \section{Fractions}
 	\kactlimport{ContinuedFractions.h}
