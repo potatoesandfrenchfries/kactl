@@ -31,8 +31,9 @@ template<int M> vl convMod(const vl &a, const vl &b) {
 	}
 	fft(outl), fft(outs);
 	rep(i,0,sz(res)) {
-		ll av = ll(real(outl[i])+.5), cv = ll(imag(outs[i])+.5);
-		ll bv = ll(imag(outl[i])+.5) + ll(real(outs[i])+.5);
+		ll av = (ll)(real(outl[i])+.5);
+		ll cv = (ll)(imag(outs[i])+.5);
+		ll bv = (ll)(imag(outl[i])+.5) + (ll)(real(outs[i])+.5);
 		res[i] = ((av % M * cut + bv) % M * cut + cv) % M;
 	}
 	return res;

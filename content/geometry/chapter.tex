@@ -23,6 +23,9 @@
 \section{Polygons}
 	\kactlimport{InsidePolygon.h}
 	\kactlimport{PolygonArea.h}
+	\textbf{Pick's theorem.} For a simple polygon with integer vertices, area $A = I + B/2 - 1$,
+	where $I$ is the number of lattice points strictly inside and $B$ the number on the boundary,
+	$B = \sum \gcd(|\Delta x|, |\Delta y|)$ over the edges. So $I = A - B/2 + 1$.
 	\kactlimport{PolygonCenter.h}
 	\kactlimport{PolygonCut.h}
 	\kactlimport{HalfPlaneIntersection.h}
@@ -34,6 +37,7 @@
 
 \section{Misc. Point Set Problems}
 	\kactlimport{ClosestPair.h}
+	\kactlimport{RectangleUnion.h}
 	% \kactlimport{ManhattanMST.h}
 	\kactlimport{kdTree.h}
 	% \kactlimport{DelaunayTriangulation.h}

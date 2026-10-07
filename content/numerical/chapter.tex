@@ -14,12 +14,21 @@
   \kactlimport{IntegrateAdaptive.h}
   \kactlimport{Simplex.h}
 
+\section{Newton's method}
+  To find a root of $f$ iterate $x \leftarrow x - f(x)/f'(x)$. Near a simple root it converges
+  quadratically (the number of correct digits doubles). It fails if $f'(x) \approx 0$ or the start is
+  poor; for a multiple root use $f/f'$. To minimise a convex $f$, find a root of $f'$.
+  Useful special cases: $\sqrt a$: $x \leftarrow (x + a/x)/2$ (for integers start above $\sqrt a$ and stop when $x$ stops decreasing);
+  $1/a$: $x \leftarrow x(2 - ax)$, with no division; power series inverse: $g \leftarrow g(2 - fg) \bmod x^{2k}$.
+  Lifting roots modulo $p^k$ is the same iteration (Hensel lifting).
+
 \section{Matrices}
   \kactlimport{Determinant.h}
   \kactlimport{IntDeterminant.h}
   \kactlimport{SolveLinear.h}
   \kactlimport{SolveLinear2.h}
   \kactlimport{SolveLinearBinary.h}
+  \kactlimport{SolveLinearMod.h}
   \kactlimport{MatrixInverse.h}
   % \kactlimport{MatrixInverse-mod.h}
   \kactlimport{Tridiagonal.h}

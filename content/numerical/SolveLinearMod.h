@@ -1,0 +1,48 @@
+/**
+ * Author: Per Austrin, Simon Lindholm, Kanish H R
+ * Date: 2026-10-07
+ * License: CC0
+ * Description: Solves $A x = b \pmod p$ for prime \texttt{mod}, like
+ * \texttt{solveLinear}. If there are multiple solutions an arbitrary one is
+ * returned. Returns the rank, or -1 if there is no solution.
+ * Data in $A$ and $b$ is lost.
+ * Time: O(n^2 m)
+ * Status: stress-tested
+ */
+#pragma once
+
+#include "../number-theory/ModPow.h"
+
+typedef vector<ll> vl;
+int solveLinearMod(vector<vl>& A, vl& b, vl& x) {
+	int n = sz(A), m = sz(x), rank = 0;
+	auto sub = [](ll a, ll b) {
+		return (a - b % mod + mod) % mod; };
+	vi col(m); iota(all(col), 0);
+	rep(i,0,n) {
+		int br = -1, bc = 0;
+		rep(r,i,n) rep(c,i,m)
+			if (br < 0 && A[r][c]) br = r, bc = c;
+		if (br < 0) {
+			rep(j,i,n) if (b[j]) return -1;
+			break;
+		}
+		swap(A[i], A[br]), swap(b[i], b[br]);
+		swap(col[i], col[bc]);
+		rep(j,0,n) swap(A[j][i], A[j][bc]);
+		ll inv = modpow(A[i][i], mod - 2);
+		rep(j,i+1,n) {
+			ll f = A[j][i] * inv % mod;
+			b[j] = sub(b[j], f * b[i]);
+			rep(k,i+1,m) A[j][k] = sub(A[j][k], f * A[i][k]);
+		}
+		rank++;
+	}
+	x.assign(m, 0);
+	for (int i = rank; i--;) {
+		b[i] = b[i] * modpow(A[i][i], mod - 2) % mod;
+		x[col[i]] = b[i];
+		rep(j,0,i) b[j] = sub(b[j], A[j][i] * b[i]);
+	}
+	return rank;
+}
