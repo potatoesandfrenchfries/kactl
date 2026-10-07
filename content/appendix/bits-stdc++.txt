@@ -1,0 +1,8 @@
+C: cassert cctype cerrno cfenv cfloat cinttypes climits clocale cmath csetjmp csignal cstdarg cstddef cstdint cstdio cstdlib cstring ctime cuchar cwchar cwctype
+C++98: algorithm bitset complex deque exception fstream functional iomanip ios iosfwd iostream istream iterator limits list locale map memory new numeric ostream queue set sstream stack stdexcept streambuf string typeinfo utility valarray vector
+C++11: array atomic chrono codecvt condition_variable forward_list future initializer_list mutex random ratio regex scoped_allocator system_error thread tuple type_traits typeindex unordered_map unordered_set (ccomplex cstdalign cstdbool ctgmath until C++14)
+C++14: shared_mutex
+C++17: any charconv filesystem memory_resource optional string_view variant
+C++20: barrier bit compare concepts coroutine format latch numbers ranges semaphore source_location span stop_token syncstream version
+C++23: expected flat_map flat_set generator print spanstream stacktrace stdatomic.h stdfloat
+C++26: text_encoding stdbit.h stdckdint.h
